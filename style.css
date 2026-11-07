@@ -1,0 +1,113 @@
+/* ===== Базовый сброс ===== */
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1a2e1a; /* тёмно-зелёный фон под клетками */
+    overflow-x: hidden;
+}
+
+/* ===== Анимированный шахматный фон ===== */
+.checker-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    /* Делаем блок больше экрана, чтобы при сдвиге не было пустых краёв */
+    width: 200vw;
+    height: 200vh;
+    z-index: -1;
+
+    /* Шахматный узор: два цвета, клетка 80x80 */
+    background-image:
+        linear-gradient(45deg, #0d1f0d 25%, transparent 25%),
+        linear-gradient(-45deg, #0d1f0d 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #0d1f0d 75%),
+        linear-gradient(-45deg, transparent 75%, #0d1f0d 75%);
+    background-size: 80px 80px;
+    background-position: 0 0, 0 40px, 40px -40px, -40px 0;
+    background-color: #2e4a2e; /* второй цвет клеток — зелёный */
+
+    /* Бесконечное движение в правый нижний угол */
+    animation: moveDiagonal 1s linear infinite;
+}
+
+@keyframes moveDiagonal {
+    from {
+        transform: translate(0, 0);
+    }
+    to {
+        /* Сдвиг ровно на один «период» узора (80px), чтобы шов был незаметен */
+        transform: translate(80px, 80px);
+    }
+}
+
+/* ===== Центральная карточка ===== */
+.hero {
+    position: center;
+    margin: 0 auto;
+    margin-top: 25vh;
+    max-width: 700px;
+    padding: 40px 30px;
+    background-color: #a8e063; /* салатовый фон */
+    border: 4px solid #0d1f0d;
+    border-radius: 0px;
+    box-shadow: 8px 8px 0 #0d1f0d;
+    text-align: center;
+}
+
+.hero h1 {
+    margin: 0;
+    font-family: "Times New Roman", Times, serif;
+    font-weight: bold;
+    font-size: clamp(24px, 5vw, 48px);
+    color: #ffffff;
+    letter-spacing: 2px;
+    text-shadow: 3px 3px 0 #0d1f0d;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== Текст внизу ===== */
+.bottom-text {
+    position: relative;
+    max-width: 700px;
+    margin: 60px auto 40px;
+    padding: 0 20px;
+    text-align: center;
+    color: #e0f0e0;
+}
+
+.bottom-text p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 8px 0;
+}
+
+/* ===== Адаптив для телефона ===== */
+@media (max-width: 600px) {
+    .hero {
+        margin-top: 15vh;
+        padding: 30px 20px;
+        box-shadow: 5px 5px 0 #0d1f0d;
+    }
+    .bottom-text {
+        margin-top: 40px;
+    }
+}
