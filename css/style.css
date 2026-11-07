@@ -16,7 +16,7 @@ body {
 }
 
 /* ===== Анимированный шахматный фон ===== */
-.checker-bg {
+.bg {
     position: fixed;
     top: 0;
     left: 0;
