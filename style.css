@@ -36,16 +36,16 @@ body {
     background-color: #2e4a2e; /* второй цвет клеток — зелёный */
 
     /* Бесконечное движение в правый нижний угол */
-    animation: moveDiagonal 1s linear infinite;
+    animation: moveDiagonal 5s linear infinite;
 }
 
 @keyframes moveDiagonal {
     from {
-        transform: translate(0, 0);
+        transform: translate(-80px, -80px);
     }
     to {
         /* Сдвиг ровно на один «период» узора (80px), чтобы шов был незаметен */
-        transform: translate(80px, 80px);
+        transform: translate(0px, 0px);
     }
 }
 
